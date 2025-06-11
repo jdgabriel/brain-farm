@@ -1,0 +1,2 @@
+CREATE DATABASE brain_farm;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
