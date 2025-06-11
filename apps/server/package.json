@@ -18,7 +18,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "env:load": "dotenv -e ../../.env --"
+    "env:load": "dotenv -e ../../.env --",
+    "db:migrate": "TS_NODE_PROJECT=./tsconfig.json pnpm env:load ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate ./src/app/persistence/migration/migration -d ./src/app/persistence/typeorm.datasource.ts",
+    "db:run": "TS_NODE_PROJECT=./tsconfig.json pnpm env:load ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/app/persistence/typeorm.datasource.ts",
+    "db:deploy": "pnpm env:load pnpm db:run"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
@@ -26,8 +29,10 @@
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.2.0",
+    "@nestjs/typeorm": "^11.0.0",
     "dotenv-cli": "^8.0.0",
     "nestjs-zod": "^4.3.1",
+    "pg": "^8.16.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "typeorm": "^0.3.24",

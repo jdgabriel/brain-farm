@@ -9,7 +9,7 @@
     "target": "ES2023",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
@@ -18,8 +18,8 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app-config": ["src/shared/app"],
-      "@internal-modules/*": ["src/shared/modules/*"],
+      "@app-config": ["./src/shared/app"],
+      "@internal-modules/*": ["./src/shared/modules/*"],
     }
   }
 }
