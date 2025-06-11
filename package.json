@@ -1,0 +1,8 @@
+{
+  "name": "brain-farm",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "server:dev": "pnpm run --filter @brain-farm/server start:dev"
+  }
+}
