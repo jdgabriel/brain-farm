@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "UNLICENSED",
   "scripts": {
-    "server:dev": "pnpm run --filter @brain-farm/server start:dev"
+    "server:dev": "pnpm run --filter @brain-farm/server start:dev",
+    "server:database": "pnpm run --filter @brain-farm/server db:deploy"
   }
 }
