@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Farm } from '@shared-modules/persistence/entity/farm.entity';
 import { Producer } from '@shared-modules/persistence/entity/producer.entity';
 import { ProducerRepository } from '@shared-modules/persistence/repository/producer.repository';
-import { Like, Raw } from 'typeorm';
+import { rawString } from '@shared-modules/persistence/utils/search-param';
 import {
   InputSearchProducer,
   UpdateProducerDto,
@@ -51,12 +51,8 @@ export class ProducerService {
     const producers = await this.producerRepository.find({
       where: {
         id: data.producerId ?? undefined,
-        name: data.name
-          ? Raw(
-              (alias) => `LOWER(${alias}) Like '%${data.name!.toLowerCase()}%'`,
-            )
-          : undefined,
-        document: data.document ? Like(`%${data.document}%`) : undefined,
+        name: rawString(data.name),
+        document: rawString(data.document),
       },
     });
 

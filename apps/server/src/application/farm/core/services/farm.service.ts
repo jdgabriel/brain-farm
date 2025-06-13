@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { Farm } from '@shared-modules/persistence/entity/farm.entity';
 import { FarmRepository } from '@shared-modules/persistence/repository/farm.repository';
-import { Raw } from 'typeorm';
+import {
+  rawNumber,
+  rawString,
+} from '@shared-modules/persistence/utils/search-param';
 import {
   InputFarmDto,
   InputSearchFarm,
@@ -32,11 +35,12 @@ export class FarmService {
     const farms = await this.farmRepository.find({
       where: {
         id: data.farmId ?? undefined,
-        name: data.name
-          ? Raw(
-              (alias) => `LOWER(${alias}) Like '%${data.name!.toLowerCase()}%'`,
-            )
-          : undefined,
+        name: rawString(data.name),
+        city: rawString(data.city),
+        state: rawString(data.state),
+        arableArea: rawNumber(data.arableArea),
+        vegetationArea: rawNumber(data.vegetationArea),
+        totalArea: rawNumber(data.totalArea),
       },
     });
 
