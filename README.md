@@ -22,13 +22,9 @@ Projeto de gerenciamento agrícola.
 
 ## Tecnologias
 
-- [NestJS](https://nestjs.com/) 
-- [TypeORM](https://typeorm.io/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [Jest](https://jestjs.io/pt-BR/)
-- [Docker](https://www.docker.com/)
-- [Swagger](https://swagger.io/)
-- [NextJS](https://nextjs.org/)
+- Backend: [NestJS](https://nestjs.com/) | [TypeORM](https://typeorm.io/) | [PostgreSQL](https://www.postgresql.org/) | [Jest](https://jestjs.io/pt-BR/) |[Swagger](https://swagger.io/)
+- Frontend: [NextJS](https://nextjs.org/)
+- [Docker & Docker Compose](https://www.docker.com/)
 
 ## Estrutura do Projeto
 
