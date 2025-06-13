@@ -1,5 +1,5 @@
-import { EnvService } from '@internal-modules/env/env.service';
-import { SnakeNamingStrategy } from '@internal-modules/persistence';
+import { EnvService } from '@shared-modules/env/env.service';
+import { SnakeNamingStrategy } from '@shared-modules/persistence';
 import { join } from 'node:path';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 

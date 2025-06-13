@@ -1,4 +1,4 @@
-import { DefaultEntity } from '@internal-modules/persistence';
+import { DefaultEntity } from '@shared-modules/persistence';
 import { Column, Entity, ManyToOne } from 'typeorm';
 import { Farm } from './farm.entity';
 import { Harvest } from './harvest.entity';
@@ -11,6 +11,11 @@ export class FarmCrop extends DefaultEntity<FarmCrop> {
   @ManyToOne(() => Harvest, (harvest) => harvest.crops)
   harvest: Harvest;
 
-  @Column()
+  @Column({ length: 50 })
   culture: string;
+
+  constructor(data: Partial<FarmCrop>) {
+    super(data);
+    Object.assign(this, data);
+  }
 }

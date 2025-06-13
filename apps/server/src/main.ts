@@ -4,7 +4,7 @@ import { lastValueFrom, map, of, switchMap } from 'rxjs';
 import { AppModule } from './app.module';
 
 import { withApiConfiguration, withApiVersion, withSwagger } from '@app-config';
-import { EnvService } from '@internal-modules/env/env.service';
+import { EnvService } from '@shared-modules/env/env.service';
 
 async function bootstrap() {
   const application = await NestFactory.create(AppModule);

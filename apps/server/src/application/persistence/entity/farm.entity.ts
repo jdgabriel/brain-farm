@@ -1,4 +1,4 @@
-import { DefaultEntity } from '@internal-modules/persistence';
+import { DefaultEntity } from '@shared-modules/persistence';
 import {
   BeforeInsert,
   BeforeUpdate,
@@ -13,22 +13,22 @@ import { Producer } from './producer.entity';
 
 @Entity({ name: 'farms' })
 export class Farm extends DefaultEntity<Farm> {
-  @Column()
+  @Column({ length: 100 })
   name: string;
 
-  @Column()
+  @Column({ length: 150 })
   city: string;
 
-  @Column()
+  @Column({ length: 75 })
   state: string;
 
-  @Column('float')
+  @Column({ type: 'float' })
   totalArea: number;
 
-  @Column('float')
+  @Column({ type: 'float' })
   arableArea: number;
 
-  @Column('float')
+  @Column({ type: 'float' })
   vegetationArea: number;
 
   @ManyToOne(() => Producer, (producer) => producer.farms)
@@ -46,5 +46,10 @@ export class Farm extends DefaultEntity<Farm> {
         'A soma das áreas agricultável e de vegetação não pode ultrapassar a área total.',
       );
     }
+  }
+
+  constructor(data: Partial<Farm>) {
+    super(data);
+    Object.assign(this, data);
   }
 }

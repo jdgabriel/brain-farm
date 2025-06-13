@@ -49,6 +49,9 @@ importers:
       zod:
         specifier: ^3.25.61
         version: 3.25.61
+      zod-validation-error:
+        specifier: ^3.5.0
+        version: 3.5.0(zod@3.25.61)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.2.0
@@ -3624,6 +3627,12 @@ packages:
   yoctocolors-cjs@2.1.2:
     resolution: {integrity: sha512-cYVsTjKl8b+FrnidjibDWskAv7UKOfcwaVZdp/it9n1s9fU3IkgDbhdIRKCW4JDsAlECJY0ytoVPT3sK6kideA==}
     engines: {node: '>=18'}
+
+  zod-validation-error@3.5.0:
+    resolution: {integrity: sha512-IWK6O51sRkq0YsnYD2oLDuK2BNsIjYUlR0+1YSd4JyBzm6/892IWroUnLc7oW4FU+b0f6948BHi6H8MDcqpOGw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      zod: ^3.25.0
 
   zod@3.25.61:
     resolution: {integrity: sha512-fzfJgUw78LTNnHujj9re1Ov/JJQkRZZGDMcYqSx7Hp4rPOkKywaFHq0S6GoHeXs0wGNE/sIOutkXgnwzrVOGCQ==}
@@ -7461,5 +7470,9 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yoctocolors-cjs@2.1.2: {}
+
+  zod-validation-error@3.5.0(zod@3.25.61):
+    dependencies:
+      zod: 3.25.61
 
   zod@3.25.61: {}

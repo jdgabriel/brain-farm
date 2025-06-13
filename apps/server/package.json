@@ -19,8 +19,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "env:load": "dotenv -e ../../.env --",
-    "db:migrate": "TS_NODE_PROJECT=./tsconfig.json pnpm env:load ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate ./src/app/persistence/migration/migration -d ./src/app/persistence/typeorm.datasource.ts",
-    "db:run": "TS_NODE_PROJECT=./tsconfig.json pnpm env:load ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/app/persistence/typeorm.datasource.ts",
+    "db:migrate": "TS_NODE_PROJECT=./tsconfig.json pnpm env:load ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate ./src/farm/persistence/migration/migration -d ./src/farm/persistence/typeorm.datasource.ts",
+    "db:run": "TS_NODE_PROJECT=./tsconfig.json pnpm env:load ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/farm/persistence/typeorm.datasource.ts",
     "db:deploy": "pnpm env:load pnpm db:run"
   },
   "dependencies": {
@@ -36,7 +36,8 @@
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "typeorm": "^0.3.24",
-    "zod": "^3.25.61"
+    "zod": "^3.25.61",
+    "zod-validation-error": "^3.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

@@ -1,12 +1,17 @@
-import { DefaultEntity } from '@internal-modules/persistence';
+import { DefaultEntity } from '@shared-modules/persistence';
 import { Column, Entity, OneToMany } from 'typeorm';
 import { FarmCrop } from './farm-crop.entity';
 
 @Entity()
 export class Harvest extends DefaultEntity<Harvest> {
-  @Column()
-  name: string; // Ex: "Safra 2021"
+  @Column({ length: 25 })
+  name: string;
 
   @OneToMany(() => FarmCrop, (farmCrop) => farmCrop.harvest)
   crops: FarmCrop[];
+
+  constructor(data: Partial<Harvest>) {
+    super(data);
+    Object.assign(this, data);
+  }
 }

@@ -19,7 +19,9 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@app-config": ["./src/shared/app"],
-      "@internal-modules/*": ["./src/shared/modules/*"],
+      "@shared-modules/*": ["./src/shared/modules/*"],
+      "@shared-http/*": ["./src/shared/http/*"],
+      "@entity/*": ["src/application/persistence/entity/*"],
     }
   }
 }

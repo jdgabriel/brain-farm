@@ -1,6 +1,6 @@
-import { EnvModule } from '@internal-modules/env/env.module';
-import { EnvService } from '@internal-modules/env/env.service';
 import { NestFactory } from '@nestjs/core';
+import { EnvModule } from '@shared-modules/env/env.module';
+import { EnvService } from '@shared-modules/env/env.service';
 import { DataSource } from 'typeorm';
 import { dataSourceOptionsFactory } from './typeorm-datasource.factory';
 
