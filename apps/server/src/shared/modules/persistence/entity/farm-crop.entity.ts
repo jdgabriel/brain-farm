@@ -1,5 +1,5 @@
-import { DefaultEntity } from '@shared-modules/persistence';
 import { Column, Entity, ManyToOne } from 'typeorm';
+import { DefaultEntity } from '../entity/default.entity';
 import { Farm } from './farm.entity';
 import { Harvest } from './harvest.entity';
 

@@ -1,4 +1,3 @@
-import { DefaultEntity } from '@shared-modules/persistence';
 import {
   BeforeInsert,
   BeforeUpdate,
@@ -8,6 +7,7 @@ import {
   ManyToOne,
   OneToMany,
 } from 'typeorm';
+import { DefaultEntity } from './default.entity';
 import { FarmCrop } from './farm-crop.entity';
 import { Producer } from './producer.entity';
 

@@ -1,5 +1,5 @@
-import { DefaultEntity } from '@shared-modules/persistence';
 import { Column, Entity, OneToMany } from 'typeorm';
+import { DefaultEntity } from './default.entity';
 import { FarmCrop } from './farm-crop.entity';
 
 @Entity()

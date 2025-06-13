@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiBody, ApiConflictResponse } from '@nestjs/swagger';
-import { ProducerConflictResponse } from 'src/application/core/exceptions/producer-conflict.exception';
+import { ProducerConflictResponse } from 'src/application/producer/core/exceptions/producer-conflict.exception';
 import { ProducerService } from '../../core/services/producer.service';
 import { InputProducerDto } from '../dto/producer.dto';
 

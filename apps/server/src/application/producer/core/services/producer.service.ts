@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Farm } from 'src/application/persistence/entity/farm.entity';
-import { ProducerRepository } from 'src/application/persistence/repository/producer.repository';
+import { Farm } from '@shared-modules/persistence/entity/farm.entity';
+import { Producer } from '@shared-modules/persistence/entity/producer.entity';
+import { ProducerRepository } from '@shared-modules/persistence/repository/producer.repository';
 import { InputProducerDto } from '../../http/dto/producer.dto';
-import { Producer } from '../../persistence/entity/producer.entity';
 import { ProducerConflict } from '../exceptions/producer-conflict.exception';
 
 @Injectable()

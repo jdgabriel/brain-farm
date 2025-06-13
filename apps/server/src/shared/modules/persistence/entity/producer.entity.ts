@@ -1,6 +1,6 @@
-import { DefaultEntity } from '@shared-modules/persistence';
+import { DocumentType } from '@application/producer/core/enum/document-type.enum';
 import { Column, Entity, OneToMany } from 'typeorm';
-import { DocumentType } from '../../core/enum/document-type.enum';
+import { DefaultEntity } from './default.entity';
 import { Farm } from './farm.entity';
 
 @Entity({ name: 'producers' })
