@@ -1,12 +1,4 @@
-import {
-  BeforeInsert,
-  BeforeUpdate,
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-} from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { DefaultEntity } from './default.entity';
 import { FarmCrop } from './farm-crop.entity';
 import { Producer } from './producer.entity';
@@ -32,21 +24,17 @@ export class Farm extends DefaultEntity<Farm> {
   vegetationArea: number;
 
   @ManyToOne(() => Producer, (producer) => producer.farms)
-  @JoinColumn()
+  @JoinColumn({
+    name: 'producerId',
+    referencedColumnName: 'id',
+  })
   producer: Producer;
+
+  @Column({ type: 'uuid', nullable: false })
+  producerId: string;
 
   @OneToMany(() => FarmCrop, (farmCrop) => farmCrop.farm)
   crops: FarmCrop[];
-
-  @BeforeInsert()
-  @BeforeUpdate()
-  validateAreas() {
-    if (this.arableArea + this.vegetationArea > this.totalArea) {
-      throw new Error(
-        'A soma das áreas agricultável e de vegetação não pode ultrapassar a área total.',
-      );
-    }
-  }
 
   constructor(data: Partial<Farm>) {
     super(data);
