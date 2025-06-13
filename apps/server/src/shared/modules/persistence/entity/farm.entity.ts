@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { DefaultEntity } from './default.entity';
-import { FarmCrop } from './farm-crop.entity';
+import { Harvest } from './harvest.entity';
 import { Producer } from './producer.entity';
 
 @Entity({ name: 'farms' })
@@ -24,17 +24,14 @@ export class Farm extends DefaultEntity<Farm> {
   vegetationArea: number;
 
   @ManyToOne(() => Producer, (producer) => producer.farms)
-  @JoinColumn({
-    name: 'producerId',
-    referencedColumnName: 'id',
-  })
+  @JoinColumn({ name: 'producerId', referencedColumnName: 'id' })
   producer: Producer;
 
   @Column({ type: 'uuid', nullable: false })
   producerId: string;
 
-  @OneToMany(() => FarmCrop, (farmCrop) => farmCrop.farm)
-  crops: FarmCrop[];
+  @OneToMany(() => Harvest, (harvest) => harvest.farmId)
+  harvests: Harvest[];
 
   constructor(data: Partial<Farm>) {
     super(data);
