@@ -4,6 +4,8 @@
   "license": "UNLICENSED",
   "scripts": {
     "server:dev": "pnpm run --filter @brain-farm/server start:dev",
-    "server:database": "pnpm run --filter @brain-farm/server db:deploy"
+    "server:database": "pnpm run --filter @brain-farm/server db:deploy",
+    "server:test:e2e": "pnpm run --filter @brain-farm/server test:e2e",
+    "preserver:dev": "pnpm server:database"
   }
 }

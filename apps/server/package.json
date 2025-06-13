@@ -19,7 +19,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.ts --runInBand",
     "env:load": "dotenv -e ../../.env --",
-    "db:migrate": "TS_NODE_PROJECT=./tsconfig.json pnpm env:load ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate ./src/shared/modules/persistence/migration/migration -d ./src/shared/modules/persistence/typeorm.datasource.ts",
+    "db:generate": "TS_NODE_PROJECT=./tsconfig.json pnpm env:load ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate ./src/shared/modules/persistence/migration/migration -d ./src/shared/modules/persistence/typeorm.datasource.ts",
     "db:run": "TS_NODE_PROJECT=./tsconfig.json pnpm env:load ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d ./src/shared/modules/persistence/typeorm.datasource.ts",
     "db:deploy": "pnpm env:load pnpm db:run"
   },
