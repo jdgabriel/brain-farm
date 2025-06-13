@@ -17,12 +17,15 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
+    "resolveJsonModule": true,
     "paths": {
       "@application/*": ["./src/application/*"],
       "@app-config": ["./src/shared/app"],
       "@shared-modules/*": ["./src/shared/modules/*"],
       "@shared-http/*": ["./src/shared/http/*"],
+      "@shared-utils/*": ["./src/shared/utils/*"],
       "@entity/*": ["src/application/persistence/entity/*"],
+      "@test/*": ["test/*"]
     }
   }
 }
