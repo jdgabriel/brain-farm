@@ -13,4 +13,15 @@ export class FarmCropRepository extends DefaultTypeOrmRepository<FarmCrop> {
   ) {
     super(FarmCrop, dataSource.manager);
   }
+
+  async countCulture() {
+    const countCulture = await this.manager
+      .createQueryBuilder(FarmCrop, 'crop')
+      .select('crop.culture', 'culture')
+      .addSelect('COUNT(*)::int', 'total')
+      .groupBy('crop.culture')
+      .getRawMany();
+
+    return countCulture;
+  }
 }
