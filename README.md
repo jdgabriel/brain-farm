@@ -108,7 +108,7 @@ pnpm server:database
 
 ## PROJETO
 - Implementar pipeline de CI/CD ( [Github Actions](https://github.com/features/actions) )
-- Implementar configurações de build em [Docker](https://www.docker.com/) com imagens base da [Chainguard](https://images.chainguard.dev/directory/image/node/versions): __Imagens leves e menor superfície de acesso externo e menor número de [vulnerabilidades - CVE's](https://images.chainguard.dev/directory/image/node/vulnerabilities)__
+- Implementar configurações de build em [Docker](https://www.docker.com/) com imagens base da [Chainguard](https://images.chainguard.dev/directory/image/node/versions): __Imagens leves com menor superfície de acesso externo e menor número de [vulnerabilidades - CVE's](https://images.chainguard.dev/directory/image/node/vulnerabilities)__
 ---
 
 ## Contato
