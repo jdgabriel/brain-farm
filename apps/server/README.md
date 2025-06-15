@@ -3,11 +3,20 @@
 Este projeto é uma API construída com [NestJS](https://nestjs.com/) para gerencia Fazendas, produtores e produção agrícola.
 
 ## Sumário
+- [Tecnologias](#tecnologias)
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Scripts de Banco de Dados](#scripts-de-banco-de-dados)
 - [Testes](#testes)
 - [Documentação da API](#documentação-da-api)
+- [Pontos de melhoria](#pontos-de-melhoria)
 ---
+
+## Tecnologias
+- [NestJS](https://nestjs.com/)
+- [TypeORM](https://typeorm.io/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Jest](https://jestjs.io/pt-BR/)
+- [Swagger](https://swagger.io/)
 
 ## Estrutura do Projeto
 
@@ -58,6 +67,8 @@ pnpm db:deploy
 pnpm test:e2e
 ```
 
+![image](../../.github/images/jest-teste-print.png)
+
 ## Documentação da API
 
 Após rodar o projeto, acesse a documentação `Swagger` em:
@@ -65,4 +76,10 @@ Após rodar o projeto, acesse a documentação `Swagger` em:
 ```
 http://localhost:3000/docs
 ```
+## Pontos de melhoria
+- Implementar Authentication e Authorization ( [Keycloak](http://keycloak.org/) | [Auth0](https://auth0.com/) | SSO );
+- Implementar `camada de cache` para os recursos do sistema ( [Redis](https://redis.io/) | [NestJS Caching](https://docs.nestjs.com/techniques/caching) );
+- Implementar regras de negócios às entidades;
+- Melhoria da documentação da aplicação em `Swagger`;
+- Proteger o endpoint da documentação em produção;
 ---
