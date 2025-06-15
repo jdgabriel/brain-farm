@@ -59,7 +59,7 @@ export const useDeleteFarm = () => {
     onSuccess: () => {
       toast.success("Propriedade excluída.")
       queryClient.invalidateQueries({ queryKey: ["farms"] })
-      queryClient.invalidateQueries({ queryKey: ["dashboard"] })
+      queryClient.invalidateQueries({ queryKey:  ["dashboard", "farm-count"] })
     },
     onError: () => {
       toast.error("Erro ao excluir essa propriedade, tente novamente.")

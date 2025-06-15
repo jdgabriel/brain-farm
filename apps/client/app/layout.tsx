@@ -9,8 +9,11 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Farm Management System",
-  description: "Simple and practical farm management system",
+  title: {
+    template: "%s | Brain Farm",
+    default: "Brain Farm",
+  },
+  description: "Simplificando o campo",
 }
 
 export default function RootLayout({
