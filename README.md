@@ -55,6 +55,9 @@ Certifique-se de que a variável `DATABASE_URL` no `.env` está apontando para o
 
 ## Rodando o Projeto
 
+> [!TIP]
+> Todos os comandos podem ser rodados na pasta raiz, seguindo os scripts do `package.json`
+
 ### Desenvolvimento
 Lembre-se de estar com o banco de dados rodando. Veja em: [Utilizando Docker](#utilizando-docker)
 
@@ -63,7 +66,8 @@ Lembre-se de estar com o banco de dados rodando. Veja em: [Utilizando Docker](#u
 ```sh
 pnpm server:dev
 ```
-Todas `migrations` necessárias serão adicionadas ao banco de dados, e a aplicação estará disponível na porta definida em `PORT` ((https://localhost:3000/v1/)) .
+
+Todas `migrations` necessárias serão adicionadas ao banco de dados, e a aplicação estará disponível na porta definida em `PORT` (https://localhost:3000/v1/) .
 
 #### Executando frontend
 
@@ -71,9 +75,6 @@ Todas `migrations` necessárias serão adicionadas ao banco de dados, e a aplica
 pnpm client:dev
 ```
 A aplicação rodará na porta 3001 (https://localhost:3001/)
-
-> [!TIP]
-> Todos os comandos podem ser rodados na pasta raiz, seguindo os scripts do `package.json`
 
 ## Scripts de Banco de Dados
 
