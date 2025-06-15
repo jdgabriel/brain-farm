@@ -1,6 +1,7 @@
 import { cultivationsApi } from "@/lib/api/cultivationsApi"
 import type { Cultivation } from "@/lib/types"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { toast } from "sonner"
 
 export const useCultivations = (harvestId: string) => {
   return useQuery({
@@ -19,7 +20,11 @@ export const useCreateCultivation = () => {
       queryClient.invalidateQueries({ queryKey: ["harvests"], })
       queryClient.invalidateQueries({ queryKey: ["cultivations", variables.harvestId] })
       queryClient.invalidateQueries({ queryKey: ["dashboard"] })
+      toast.success('Cultivo criado com sucesso')
     },
+    onError: () => {     
+      toast.error('Ops! Ocorreu um erro ao criar o cultivo')
+    }
   })
 }
 
@@ -33,7 +38,11 @@ export const useUpdateCultivation = () => {
       queryClient.invalidateQueries({ queryKey: ["harvests"], })
       queryClient.invalidateQueries({ queryKey: ["cultivations", variables.harvestId] })
       queryClient.invalidateQueries({ queryKey: ["dashboard"] })
+      toast.success('Cultivo atualizada com sucesso')
     },
+    onError: () => {     
+      toast.error('Ops! Ocorreu um erro ao atualizar o cultivo')
+    }
   })
 }
 
@@ -47,6 +56,10 @@ export const useDeleteCultivation = () => {
       queryClient.invalidateQueries({ queryKey: ["harvests"], })
       queryClient.invalidateQueries({ queryKey: ["cultivations", variables.harvestId] })
       queryClient.invalidateQueries({ queryKey: ["dashboard"] })
+      toast.success('Cultivo excluído com sucesso')
     },
+    onError: () => {     
+      toast.error('Ops! Ocorreu um erro ao excluir o cultivo')
+    }
   })
 }

@@ -24,8 +24,12 @@ export const useCreateProducer = () => {
   return useMutation({
     mutationFn: producersApi.create,
     onSuccess: () => {
+      toast.success('Produtor criado com sucesso.')
       queryClient.invalidateQueries({ queryKey: ["producers"] })
     },
+    onError: () => {     
+      toast.error('Ops! Ocorreu um erro ao criar o produtor')
+    }
   })
 }
 
@@ -40,7 +44,7 @@ export const useUpdateProducer = () => {
       toast.success('Produtor atualizado.')
     },
     onError: () => {     
-      toast.error('Ops! Ocorreu um erro')
+      toast.error('Ops! Ocorreu um erro ao atualizar o produtor')
     }
   })
 }
@@ -50,7 +54,11 @@ export const useDeleteProducer = () => {
   return useMutation({
     mutationFn: ({ producerId }: {producerId: string}) => producersApi.delete(producerId),
     onSuccess: () => {
+      toast.success('Produtor excluído com sucesso.')
       queryClient.invalidateQueries({ queryKey: ["producers"] })
     },
+    onError: () => {     
+      toast.error('Ops! Ocorreu um erro ao excluir o produtor')
+    }
   })
 }

@@ -23,13 +23,13 @@ export const useCreateFarm = () => {
 
   return useMutation({
     mutationFn: farmsApi.create,
-     onError: () => {
-      toast.error("Erro ao criar a propriedade, tente novamente.")
-    },
     onSuccess: () => {
       toast.success("Propriedade criada com sucesso.")
       queryClient.invalidateQueries({ queryKey: ["farms"] })
       queryClient.invalidateQueries({ queryKey: ["dashboard"] })
+    },
+    onError: () => {
+      toast.error("Erro ao criar a propriedade, tente novamente.")
     },
   })
 }
@@ -39,14 +39,14 @@ export const useUpdateFarm = () => {
 
   return useMutation({
     mutationFn: ({ id, ...farm }: { id: string } & Partial<Farm>) => farmsApi.update(id, farm),
-    onError: () => {
-      toast.error("Erro ao realizar atualizada desta propriedade, tente novamente.")
-    },
     onSuccess: (_, variables) => {
       toast.success("Propriedade atualizada.")
       queryClient.invalidateQueries({ queryKey: ["farms"] })
       queryClient.invalidateQueries({ queryKey: ["farms", variables.id] })
       queryClient.invalidateQueries({ queryKey: ["dashboard"] })
+    },
+    onError: () => {
+      toast.error("Erro ao realizar atualizada desta propriedade, tente novamente.")
     },
   })
 }
@@ -56,13 +56,13 @@ export const useDeleteFarm = () => {
 
   return useMutation({
     mutationFn: farmsApi.delete,
-    onError: () => {
-      toast.error("Erro ao excluir essa propriedade, tente novamente.")
-    },
     onSuccess: () => {
       toast.success("Propriedade excluída.")
       queryClient.invalidateQueries({ queryKey: ["farms"] })
       queryClient.invalidateQueries({ queryKey: ["dashboard"] })
+    },
+    onError: () => {
+      toast.error("Erro ao excluir essa propriedade, tente novamente.")
     },
   })
 }
