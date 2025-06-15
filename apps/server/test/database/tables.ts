@@ -1,5 +1,5 @@
 export enum Tables {
-  FARM_CROPS = 'farm-crops',
+  CULTIVATIONS = 'cultivations',
   FARMS = 'farms',
   HARVEST = 'harvest',
   PRODUCERS = 'producers',
