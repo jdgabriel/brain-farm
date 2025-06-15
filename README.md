@@ -96,6 +96,9 @@ pnpm server:database
 
 ### FRONTEND
 - Implementar `Authentication` e `Authorization` ( [Keycloak](http://keycloak.org/) | [Auth0](https://auth0.com/) | [Auth.js (NextAuth.js)](https://authjs.dev/) );
+- Implementar responsividade para a interface;
+- Melhorar a exibição de erros customizados da API;
+- Implementar [Server Actions](https://nextjs.org/docs/14/app/building-your-application/data-fetching/server-actions-and-mutations);
 - Implementar controlo de estado global ( [Zustand](https://zustand-demo.pmnd.rs/) | [Redux](https://redux.js.org/) | [Immer](https://immerjs.github.io/immer/) ) 
 - Criar testes em componentes ( [React Testing LIbrary](https://testing-library.com/) | [Playwright](https://playwright.dev/) );
 - Criar componentes genéricos para uso geral do sistema ( Header, DataTable, Pagination, Modal, Alerts )
