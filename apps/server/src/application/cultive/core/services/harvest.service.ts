@@ -1,6 +1,6 @@
 import {
-  CreateHarvestDto,
-  UpdateHarvestDto,
+    InputHarvest,
+    InputUpdateHarvest,
 } from '@application/cultive/http/dto/harvest.dto';
 import { FarmNotFound } from '@application/farm/core/exceptions/farm-not-found.exception';
 import { Injectable } from '@nestjs/common';
@@ -16,7 +16,7 @@ export class HarvestService {
     private readonly harvestRepository: HarvestRepository,
   ) {}
 
-  async create(data: CreateHarvestDto) {
+  async create(data: InputHarvest) {
     const farm = await this.farmRepository.exists(data.farmId);
     if (!farm) {
       throw new FarmNotFound();
@@ -43,7 +43,7 @@ export class HarvestService {
     return harvest;
   }
 
-  async update(data: UpdateHarvestDto, harvestId: string) {
+  async update(data: InputUpdateHarvest, harvestId: string) {
     const harvestExists = await this.harvestRepository.exists(harvestId);
     if (!harvestExists) {
       throw new HarvestNotFound();

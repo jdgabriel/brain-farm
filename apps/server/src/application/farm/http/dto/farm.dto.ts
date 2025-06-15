@@ -1,7 +1,11 @@
 import { createZodDto } from 'nestjs-zod';
-import { FarmPublicInput, FarmPublicSearch } from '../../core/types/farm.type';
+import {
+  Farm,
+  FarmPublicInput,
+  FarmPublicSearch,
+} from '../../core/types/farm.type';
 
-export class InputFarmDto extends createZodDto(
+export class InputFarm extends createZodDto(
   FarmPublicInput.refine(
     (data) => {
       if (
@@ -21,7 +25,7 @@ export class InputFarmDto extends createZodDto(
   ),
 ) {}
 
-export class UpdateFarmDto extends createZodDto(
+export class InputUpdateFarm extends createZodDto(
   FarmPublicInput.partial().refine(
     (data) => {
       if (
@@ -46,3 +50,5 @@ export class InputSearchFarmId extends createZodDto(
 ) {}
 
 export class InputSearchFarm extends createZodDto(FarmPublicSearch.partial()) {}
+
+export class OutputFarm extends createZodDto(Farm) {}

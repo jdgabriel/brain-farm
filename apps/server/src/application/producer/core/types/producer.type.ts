@@ -1,4 +1,3 @@
-import { FarmPublicInput } from '@application/farm/core/types/farm.type';
 import { z } from 'zod';
 import { DocumentType } from '../enum/document-type.enum';
 
@@ -9,7 +8,6 @@ export const Producer = z.object({
   name: z.string(),
   document: z.string(),
   docType: z.nativeEnum(DocumentType),
-  farms: z.array(FarmPublicInput).optional(),
 });
 export type Producer = z.infer<typeof Producer>;
 
@@ -24,7 +22,6 @@ export const ProducerPublicInput = z.object({
   name: z.string().min(5),
   document: ProducerDocument,
   docType: z.nativeEnum(DocumentType),
-  farms: z.array(FarmPublicInput).min(1).optional(),
 });
 
 export type ProducerPublicInput = z.infer<typeof ProducerPublicInput>;

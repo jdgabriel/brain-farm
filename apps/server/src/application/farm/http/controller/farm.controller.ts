@@ -15,16 +15,20 @@ import {
 import {
   ApiBody,
   ApiConflictResponse,
+  ApiCreatedResponse,
+  ApiNoContentResponse,
   ApiNotFoundResponse,
+  ApiOkResponse,
   ApiParam,
   ApiQuery,
 } from '@nestjs/swagger';
 import { FarmService } from '../../core/services/farm.service';
 import {
-  InputFarmDto,
+  InputFarm,
   InputSearchFarm,
   InputSearchFarmId,
-  UpdateFarmDto,
+  InputUpdateFarm,
+  OutputFarm,
 } from '../dto/farm.dto';
 
 @Controller({ path: 'farms', version: '1' })
@@ -74,37 +78,51 @@ export class FarmController {
     type: String,
     description: 'Producer valid id (UUID)',
   })
+  @ApiOkResponse({
+    description: 'List of farms',
+    type: OutputFarm,
+    isArray: true,
+  })
   fetchFarms(@Query() query: InputSearchFarm) {
     return this.farmService.fetch(query);
   }
 
   @Get(':farmId')
   @ApiParam({ name: 'farmId', type: String, description: 'Valid UUID' })
+  @ApiOkResponse({
+    description: 'Get farm',
+    type: OutputFarm,
+  })
   getFarmById(@Param() { farmId }: InputSearchFarmId) {
     return this.farmService.find(farmId);
   }
 
   @Post()
-  @ApiBody({ type: InputFarmDto })
+  @ApiBody({ type: InputFarm })
   @ApiConflictResponse({
     description: 'Farm already exists',
     type: FarmConflictResponse,
   })
-  createFarm(@Body() farm: InputFarmDto) {
+  @ApiCreatedResponse({
+    description: 'Create farm successfully',
+    type: OutputFarm,
+  })
+  createFarm(@Body() farm: InputFarm) {
     return this.farmService.create(farm);
   }
 
   @Patch(':farmId')
   @ApiParam({ name: 'farmId', type: String, description: 'Valid UUID' })
-  @ApiBody({ type: UpdateFarmDto })
+  @ApiBody({ type: InputUpdateFarm })
   @ApiNotFoundResponse({
     description: 'Farm not found',
     type: FarmNotFoundResponse,
   })
+  @ApiNoContentResponse({ description: 'Farm updated successfully' })
   @HttpCode(HttpStatus.NO_CONTENT)
   async updateFarm(
     @Param() { farmId }: InputSearchFarmId,
-    @Body() farm: UpdateFarmDto,
+    @Body() farm: InputUpdateFarm,
   ) {
     await this.farmService.update(farm, farmId);
   }
@@ -112,6 +130,7 @@ export class FarmController {
   @Delete(':farmId')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiParam({ name: 'farmId', type: String, description: 'Valid UUID' })
+  @ApiNoContentResponse({ description: 'Farm deleted successfully' })
   async deleteFarm(@Param() { farmId }: InputSearchFarmId) {
     await this.farmService.delete(farmId);
   }

@@ -1,12 +1,13 @@
 import { createZodDto } from 'nestjs-zod';
 import {
+  Producer,
   ProducerPublicInput,
   ProducerPublicSearch,
 } from '../../core/types/producer.type';
 
-export class InputProducerDto extends createZodDto(ProducerPublicInput) {}
+export class InputProducer extends createZodDto(ProducerPublicInput) {}
 
-export class UpdateProducerDto extends createZodDto(
+export class InputUpdateProducer extends createZodDto(
   ProducerPublicInput.partial(),
 ) {}
 
@@ -15,3 +16,5 @@ export class InputSearchProducerId extends createZodDto(
 ) {}
 
 export class InputSearchProducer extends createZodDto(ProducerPublicSearch) {}
+
+export class OutputProducer extends createZodDto(Producer) {}

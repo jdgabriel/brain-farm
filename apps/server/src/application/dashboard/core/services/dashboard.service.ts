@@ -16,7 +16,7 @@ export class DashboardService {
     return { count };
   }
 
-  async producersCount() {
+  async countProducers() {
     const count = await this.producerRepository.count();
     return { count };
   }

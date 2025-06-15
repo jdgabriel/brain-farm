@@ -1,6 +1,6 @@
 import {
-  InputCultivationDto,
-  UpdateCultivationDto,
+    InputCultivation,
+    UpdateCultivation,
 } from '@application/cultive/http/dto/cultivation.dto';
 import { Injectable } from '@nestjs/common';
 import { Cultivation } from '@shared-modules/persistence/entity/cultivation.entity';
@@ -16,7 +16,7 @@ export class CultivationService {
     private readonly harvestRepository: HarvestRepository,
   ) {}
 
-  async create(data: InputCultivationDto) {
+  async create(data: InputCultivation) {
     const cultivation = new Cultivation(data);
     await this.cultivationRepository.save(cultivation);
 
@@ -44,7 +44,7 @@ export class CultivationService {
     return cultivations;
   }
 
-  async update(data: UpdateCultivationDto, cultivationId: string) {
+  async update(data: UpdateCultivation, cultivationId: string) {
     const cultivationExists =
       await this.cultivationRepository.findOneById(cultivationId);
 

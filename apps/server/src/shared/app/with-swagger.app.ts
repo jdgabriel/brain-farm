@@ -17,8 +17,7 @@ export const withSwagger =
         status: 400,
         description: 'Invalid body input(s)',
         type: ValidationInputResponse,
-      })
-      .addBearerAuth();
+      });
 
     const document = SwaggerModule.createDocument(app, documentBuilder.build());
 

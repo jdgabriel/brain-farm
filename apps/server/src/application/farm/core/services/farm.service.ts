@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { Farm } from '@shared-modules/persistence/entity/farm.entity';
 import { FarmRepository } from '@shared-modules/persistence/repository/farm.repository';
 import {
-  rawNumber,
-  rawString,
+    rawNumber,
+    rawString,
 } from '@shared-modules/persistence/utils/search-param';
 import {
-  InputFarmDto,
-  InputSearchFarm,
-  UpdateFarmDto,
+    InputFarm,
+    InputSearchFarm,
+    InputUpdateFarm,
 } from '../../http/dto/farm.dto';
 import { FarmNotFound } from '../exceptions/farm-not-found.exception';
 
@@ -16,7 +16,7 @@ import { FarmNotFound } from '../exceptions/farm-not-found.exception';
 export class FarmService {
   constructor(private readonly farmRepository: FarmRepository) {}
 
-  async create(data: InputFarmDto) {
+  async create(data: InputFarm) {
     const farm = new Farm(data);
     await this.farmRepository.save(farm);
     return farm;
@@ -48,7 +48,7 @@ export class FarmService {
     return farms;
   }
 
-  async update(data: UpdateFarmDto, farmId: string) {
+  async update(data: InputUpdateFarm, farmId: string) {
     const farmExists = await this.farmRepository.findOneById(farmId);
 
     if (!farmExists) {

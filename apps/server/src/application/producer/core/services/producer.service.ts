@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { Farm } from '@shared-modules/persistence/entity/farm.entity';
 import { Producer } from '@shared-modules/persistence/entity/producer.entity';
 import { ProducerRepository } from '@shared-modules/persistence/repository/producer.repository';
 import { rawString } from '@shared-modules/persistence/utils/search-param';
 import {
   InputSearchProducer,
-  UpdateProducerDto,
+  InputUpdateProducer,
 } from '../../http/dto/producer.dto';
 import { ProducerConflict } from '../exceptions/producer-conflict.exception';
 import { ProducerNotFound } from '../exceptions/producer-not-found.exception';
@@ -14,7 +13,7 @@ import { ProducerNotFound } from '../exceptions/producer-not-found.exception';
 export class ProducerService {
   constructor(private readonly producerRepository: ProducerRepository) {}
 
-  async create(data: UpdateProducerDto) {
+  async create(data: InputUpdateProducer) {
     const producerExists = await this.producerRepository.existsBy({
       document: data.document,
     });
@@ -28,10 +27,6 @@ export class ProducerService {
       document: data.document,
       docType: data.docType,
     });
-
-    if (data.farms) {
-      producer.farms = data.farms.map((farm) => new Farm(farm));
-    }
 
     await this.producerRepository.save(producer);
 
@@ -59,7 +54,7 @@ export class ProducerService {
     return producers;
   }
 
-  async update(data: UpdateProducerDto, producerId: string) {
+  async update(data: InputUpdateProducer, producerId: string) {
     const producerExists =
       await this.producerRepository.findOneById(producerId);
 
