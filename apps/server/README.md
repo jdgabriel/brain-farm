@@ -80,6 +80,8 @@ http://localhost:3000/docs
 - Implementar Authentication e Authorization ( [Keycloak](http://keycloak.org/) | [Auth0](https://auth0.com/) | SSO );
 - Implementar `camada de cache` para os recursos do sistema ( [Redis](https://redis.io/) | [NestJS Caching](https://docs.nestjs.com/techniques/caching) );
 - Implementar regras de negócios às entidades;
+- Implementar configurações de logs para endpoints;
+- Implementar métricas e monitoramento do sistema ( [OpenTelemetry](https://opentelemetry.io/) | [Jaeger](https://www.jaegertracing.io/) | [Grafana](https://grafana.com/) | [Prometheus](https://prometheus.io/) )
 - Melhoria da documentação da aplicação em `Swagger`;
 - Proteger o endpoint da documentação em produção;
 ---

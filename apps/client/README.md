@@ -44,6 +44,6 @@ Certifique que o backend está rodando na porta 3000 (http://localhost:3001/v1)
 - Implementar [Server Actions](https://nextjs.org/docs/14/app/building-your-application/data-fetching/server-actions-and-mutations);
 - Implementar controlo de estado global ( [Zustand](https://zustand-demo.pmnd.rs/) | [Redux](https://redux.js.org/) | [Immer](https://immerjs.github.io/immer/) ) 
 - Criar testes em componentes ( [React Testing LIbrary](https://testing-library.com/) | [Playwright](https://playwright.dev/) );
-- Criar componentes genéricos para uso geral do sistema ( Header, DataTable, Pagination, Modal, Alerts )
+- Implementar componentes genéricos para uso geral do sistema ( Header, DataTable, Pagination, Modal, Alerts )
 - Padronização de toda a interface e componentes ( Cores, Tamanhos e Ícones )
 ---

@@ -91,6 +91,8 @@ pnpm server:database
 - Implementar Authentication e Authorization ( [Keycloak](http://keycloak.org/) | [Auth0](https://auth0.com/) | SSO );
 - Implementar `camada de cache` para os recursos do sistema ( [Redis](https://redis.io/) | [NestJS Caching](https://docs.nestjs.com/techniques/caching) );
 - Implementar regras de negócios às entidades;
+- Implementar configurações de logs para endpoints;
+- Implementar métricas e monitoramento do sistema ( [OpenTelemetry](https://opentelemetry.io/) | [Jaeger](https://www.jaegertracing.io/) | [Grafana](https://grafana.com/) | [Prometheus](https://prometheus.io/) )
 - Melhoria da documentação da aplicação em `Swagger`;
 - Proteger o endpoint da documentação em produção;
 
@@ -101,9 +103,12 @@ pnpm server:database
 - Implementar [Server Actions](https://nextjs.org/docs/14/app/building-your-application/data-fetching/server-actions-and-mutations);
 - Implementar controlo de estado global ( [Zustand](https://zustand-demo.pmnd.rs/) | [Redux](https://redux.js.org/) | [Immer](https://immerjs.github.io/immer/) ) 
 - Criar testes em componentes ( [React Testing LIbrary](https://testing-library.com/) | [Playwright](https://playwright.dev/) );
-- Criar componentes genéricos para uso geral do sistema ( Header, DataTable, Pagination, Modal, Alerts )
+- Implementar componentes genéricos para uso geral do sistema ( Header, DataTable, Pagination, Modal, Alerts )
 - Padronização de toda a interface e componentes ( Cores, Tamanhos e Ícones )
 
+## PROJETO
+- Implementar pipeline de CI/CD ( [Github Actions](https://github.com/features/actions) )
+- Implementar configurações de build em [Docker](https://www.docker.com/) com imagens base da [Chainguard](https://images.chainguard.dev/directory/image/node/versions): __Imagens leves e menor superfície de acesso externo e menor número de [vulnerabilidades - CVE's](https://images.chainguard.dev/directory/image/node/vulnerabilities)__
 ---
 
 ## Contato
