@@ -10,6 +10,11 @@ export class DashboardController {
     return await this.dashboardService.countFarms();
   }
 
+  @Get('producers-count')
+  async producersCount() {
+    return await this.dashboardService.producersCount();
+  }
+
   @Get('total-area-count')
   async totalAreas() {
     return await this.dashboardService.totalAreas();

@@ -12,7 +12,7 @@ export class Producer extends DefaultEntity<Producer> {
   document: string;
 
   @Column({ type: 'enum', enum: DocumentType })
-  docType: DocumentType;
+  docType: keyof typeof DocumentType;
 
   @OneToMany(() => Farm, (farm) => farm.producer)
   farms: Farm[];

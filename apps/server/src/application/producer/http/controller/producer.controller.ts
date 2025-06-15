@@ -50,14 +50,14 @@ export class ProducerController {
     required: false,
     description: 'Valid producer document',
   })
-  fetchProducers(@Query() query: InputSearchProducer) {
-    return this.producerService.fetch(query);
+  async fetchProducers(@Query() query: InputSearchProducer) {
+    return await this.producerService.fetch(query);
   }
 
   @Get(':producerId')
   @ApiParam({ name: 'producerId', type: String, description: 'Valid UUID' })
-  getProducerById(@Param() { producerId }: InputSearchProducerId) {
-    return this.producerService.find(producerId!);
+  async getProducerById(@Param() { producerId }: InputSearchProducerId) {
+    return await this.producerService.find(producerId!);
   }
 
   @Post()
@@ -66,8 +66,8 @@ export class ProducerController {
     description: 'Producer already exists',
     type: ProducerConflictResponse,
   })
-  createProducer(@Body() producer: InputProducerDto) {
-    return this.producerService.create(producer);
+  async createProducer(@Body() producer: InputProducerDto) {
+    return await this.producerService.create(producer);
   }
 
   @Patch(':producerId')
@@ -78,17 +78,17 @@ export class ProducerController {
     type: ProducerNotFoundResponse,
   })
   @HttpCode(HttpStatus.NO_CONTENT)
-  updateProducer(
+  async updateProducer(
     @Param() { producerId }: InputSearchProducerId,
     @Body() producer: UpdateProducerDto,
   ) {
-    this.producerService.update(producer, producerId!);
+    await this.producerService.update(producer, producerId!);
   }
 
   @Delete(':producerId')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiParam({ name: 'producerId', type: String, description: 'Valid UUID' })
-  deleteProducer(@Param() { producerId }: InputSearchProducerId) {
-    this.producerService.delete(producerId!);
+  async deleteProducer(@Param() { producerId }: InputSearchProducerId) {
+    await this.producerService.delete(producerId!);
   }
 }

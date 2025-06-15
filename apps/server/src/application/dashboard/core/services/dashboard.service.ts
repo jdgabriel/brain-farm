@@ -1,16 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { FarmCropRepository } from '@shared-modules/persistence/repository/farm-crop.repository';
+import { CultivationRepository } from '@shared-modules/persistence/repository/farm-crop.repository';
 import { FarmRepository } from '@shared-modules/persistence/repository/farm.repository';
+import { ProducerRepository } from '@shared-modules/persistence/repository/producer.repository';
 
 @Injectable()
 export class DashboardService {
   constructor(
     private readonly farmRepository: FarmRepository,
-    private readonly farmCropRepository: FarmCropRepository,
+    private readonly cultivationRepository: CultivationRepository,
+    private readonly producerRepository: ProducerRepository,
   ) {}
 
   async countFarms() {
     const count = await this.farmRepository.count();
+    return { count };
+  }
+
+  async producersCount() {
+    const count = await this.producerRepository.count();
     return { count };
   }
 
@@ -20,7 +27,7 @@ export class DashboardService {
   }
 
   async totalCultives() {
-    const totalCultives = await this.farmCropRepository.countCulture();
+    const totalCultives = await this.cultivationRepository.countCulture();
     return totalCultives;
   }
 }

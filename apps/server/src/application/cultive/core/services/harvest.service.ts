@@ -38,6 +38,11 @@ export class HarvestService {
     return harvests;
   }
 
+  async getHarvest(harvestId: string) {
+    const harvest = await this.harvestRepository.findOneById(harvestId);
+    return harvest;
+  }
+
   async update(data: UpdateHarvestDto, harvestId: string) {
     const harvestExists = await this.harvestRepository.exists(harvestId);
     if (!harvestExists) {
@@ -52,13 +57,13 @@ export class HarvestService {
     return harvest;
   }
 
-  async delete(farmCropId: string) {
-    const farmCropExists = await this.harvestRepository.findOneById(farmCropId);
+  async delete(cultivationId: string) {
+    const cultivationExists = await this.harvestRepository.findOneById(cultivationId);
 
-    if (!farmCropExists) {
+    if (!cultivationExists) {
       throw new HarvestNotFound();
     }
 
-    await this.harvestRepository.softDelete(farmCropExists.id);
+    await this.harvestRepository.softDelete(cultivationExists.id);
   }
 }

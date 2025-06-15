@@ -68,6 +68,12 @@ export class FarmController {
     type: Number,
     description: 'Vegetation area of the farm (in hectares)',
   })
+  @ApiQuery({
+    name: 'producerId',
+    required: false,
+    type: String,
+    description: 'Producer valid id (UUID)',
+  })
   fetchFarms(@Query() query: InputSearchFarm) {
     return this.farmService.fetch(query);
   }

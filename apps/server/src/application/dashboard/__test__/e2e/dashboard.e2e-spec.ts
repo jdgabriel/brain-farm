@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common';
 import { TestingModule } from '@nestjs/testing';
 import { createNestApp } from '@test/application.setup';
 import { Tables, testDbClient } from '@test/database';
-import { farmCropFactory, farmFactory } from '@test/factory';
+import { cultivationsFactory, farmFactory } from '@test/factory';
 import { harvestFactory } from '@test/factory/harvest.factory';
 import * as request from 'supertest';
 
@@ -19,7 +19,7 @@ describe('(E2E) Dashboard Report', () => {
 
   afterAll(async () => {
     await module.close();
-    await testDbClient.table(Tables.FARM_CROPS).del();
+    await testDbClient.table(Tables.CULTIVATIONS).del();
     await testDbClient.table(Tables.HARVEST).del();
     await testDbClient.table(Tables.FARMS).del();
     await testDbClient.table(Tables.PRODUCERS).del();
@@ -29,11 +29,11 @@ describe('(E2E) Dashboard Report', () => {
   it('should be show total of farms in database', async () => {
     const farm = farmFactory.buildList(10);
     const harvest = harvestFactory.build({ farmId: farm[0].id });
-    const crop = farmCropFactory.build({ harvestId: harvest.id });
+    const crop = cultivationsFactory.build({ harvestId: harvest.id });
 
     await testDbClient.table(Tables.FARMS).insert(farm);
     await testDbClient.table(Tables.HARVEST).insert(harvest);
-    await testDbClient.table(Tables.FARM_CROPS).insert(crop);
+    await testDbClient.table(Tables.CULTIVATIONS).insert(crop);
 
     await request(app.getHttpServer())
       .get('/dashboard/farm-count')
@@ -64,11 +64,11 @@ describe('(E2E) Dashboard Report', () => {
   it('should be show total of each cultive', async () => {
     const farm = farmFactory.build();
     const harvest = harvestFactory.build({ farmId: farm.id });
-    const cropOne = farmCropFactory.buildList(2, {
+    const cropOne = cultivationsFactory.buildList(2, {
       culture: 'Corn',
       harvestId: harvest.id,
     });
-    const cropTwo = farmCropFactory.buildList(5, {
+    const cropTwo = cultivationsFactory.buildList(5, {
       culture: 'Soja',
       harvestId: harvest.id,
     });
@@ -76,7 +76,7 @@ describe('(E2E) Dashboard Report', () => {
     await testDbClient.table(Tables.FARMS).insert(farm);
     await testDbClient.table(Tables.HARVEST).insert(harvest);
     await testDbClient
-      .table(Tables.FARM_CROPS)
+      .table(Tables.CULTIVATIONS)
       .insert([...cropOne, ...cropTwo]);
 
     await request(app.getHttpServer())

@@ -9,29 +9,35 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiBody, ApiNotFoundResponse } from '@nestjs/swagger';
+import { ApiBody, ApiNotFoundResponse, ApiTags } from '@nestjs/swagger';
 
 import { HarvestNotFoundResponse } from '@application/cultive/core/exceptions/harvest-not-found.exception';
 import { HarvestService } from '@application/cultive/core/services/harvest.service';
 import { CreateHarvestDto, UpdateHarvestDto } from '../dto/harvest.dto';
 
-@Controller({ path: 'harvest', version: '1' })
+@Controller({ path: 'farm', version: '1' })
+@ApiTags('Harvest')
 export class HarvestController {
   constructor(private readonly harvestService: HarvestService) {}
 
-  @Post()
+  @Post(':farmId/harvest')
   @ApiBody({ type: CreateHarvestDto })
   @HttpCode(HttpStatus.CREATED)
   createHarvest(@Body() harvest: CreateHarvestDto) {
     return this.harvestService.create(harvest);
   }
 
-  @Get(':farmId')
+  @Get(':farmId/harvest')
   fetchHarvests(@Param('farmId') farmId: string) {
     return this.harvestService.fetchFarmId(farmId);
   }
 
-  @Patch(':harvestId')
+  @Get(':farmId/harvest/:harvestId')
+  getHarvest(@Param('harvestId') harvestId: string) {
+    return this.harvestService.getHarvest(harvestId);
+  }
+
+  @Patch(':farmId/harvest/:harvestId')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiNotFoundResponse({
     description: 'Harvest not found',
@@ -44,7 +50,7 @@ export class HarvestController {
     await this.harvestService.update(harvest, harvestId);
   }
 
-  @Delete(':harvestId')
+  @Delete(':farmId/harvest/:harvestId')
   @HttpCode(HttpStatus.NO_CONTENT)
   async deleteHarvest(@Param('harvestId') harvestId: string) {
     await this.harvestService.delete(harvestId);

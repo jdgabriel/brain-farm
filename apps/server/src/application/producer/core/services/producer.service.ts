@@ -67,6 +67,18 @@ export class ProducerService {
       throw new ProducerNotFound();
     }
 
+    if (data.document) {
+      const existingWithSameDocument =
+        await this.producerRepository.existsWithSameDocument(
+          producerId,
+          data.document,
+        );
+
+      if (existingWithSameDocument) {
+        throw new ProducerConflict();
+      }
+    }
+
     const producer = new Producer({
       id: producerId,
       name: data.name,
@@ -82,7 +94,7 @@ export class ProducerService {
     const producerExists =
       await this.producerRepository.findOneById(producerId);
 
-    if (producerExists) {
+    if (!producerExists) {
       throw new ProducerNotFound();
     }
 

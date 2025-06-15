@@ -1,6 +1,7 @@
+import { CultivationStatus } from '@application/cultive/core/enum/cultivation.enum';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Cultivation } from './cultivation.entity';
 import { DefaultEntity } from './default.entity';
-import { FarmCrop } from './farm-crop.entity';
 import { Farm } from './farm.entity';
 
 @Entity()
@@ -8,8 +9,21 @@ export class Harvest extends DefaultEntity<Harvest> {
   @Column({ length: 25 })
   name: string;
 
-  @OneToMany(() => FarmCrop, (farmCrop) => farmCrop.harvest)
-  crops: FarmCrop[];
+  @Column({
+    type: 'enum',
+    enum: CultivationStatus,
+    default: CultivationStatus.PLOWING,
+  })
+  status: keyof typeof CultivationStatus;
+
+  @Column({ type: 'timestamptz', nullable: true })
+  plantingDate: Date;
+
+  @Column({ type: 'timestamptz', nullable: true })
+  expectedHarvestDate: Date;
+
+  @OneToMany(() => Cultivation, (cultivation) => cultivation.harvest)
+  crops: Cultivation[];
 
   @ManyToOne(() => Farm, (farm) => farm.harvests, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'farmId', referencedColumnName: 'id' })

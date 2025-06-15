@@ -35,6 +35,7 @@ export class FarmService {
     const farms = await this.farmRepository.find({
       where: {
         id: data.farmId ?? undefined,
+        producerId: data.producerId ?? undefined,
         name: rawString(data.name),
         city: rawString(data.city),
         state: rawString(data.state),

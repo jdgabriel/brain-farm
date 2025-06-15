@@ -19,7 +19,7 @@ describe('(E2E) Cultive - Harvest', () => {
 
   afterAll(async () => {
     await module.close();
-    await testDbClient.table(Tables.FARM_CROPS).del();
+    await testDbClient.table(Tables.CULTIVATIONS).del();
     await testDbClient.table(Tables.HARVEST).del();
     await testDbClient.table(Tables.FARMS).del();
     await testDbClient.table(Tables.PRODUCERS).del();
@@ -32,7 +32,7 @@ describe('(E2E) Cultive - Harvest', () => {
     await testDbClient.table(Tables.FARMS).insert(farm);
 
     await request(app.getHttpServer())
-      .post('/harvest')
+      .post(`/farm/${farm.id}/harvest`)
       .send(harvest)
       .expect(HttpStatus.CREATED)
       .expect((response) => {
@@ -52,7 +52,7 @@ describe('(E2E) Cultive - Harvest', () => {
     await testDbClient.table(Tables.HARVEST).insert(harvests);
 
     await request(app.getHttpServer())
-      .get(`/harvest/${farm.id}`)
+      .get(`/farm/${farm.id}/harvest`)
       .expect(HttpStatus.OK)
       .expect((response) => {
         expect(Array.isArray(response.body)).toBe(true);
@@ -68,7 +68,7 @@ describe('(E2E) Cultive - Harvest', () => {
     await testDbClient.table(Tables.HARVEST).insert(harvest);
 
     await request(app.getHttpServer())
-      .patch(`/harvest/${harvest.id}`)
+      .patch(`/farm/${farm.id}/harvest/${harvest.id}`)
       .send({ name: 'updated-harvest-name' })
       .expect(HttpStatus.NO_CONTENT);
   });

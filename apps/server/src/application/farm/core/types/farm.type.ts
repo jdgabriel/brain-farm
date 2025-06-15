@@ -1,5 +1,5 @@
+import { CultivationPublicId } from '@application/cultive/core/types/cultivation.type';
 import { z } from 'zod';
-import { FarmCropPublic } from './farm-crop.type';
 
 export const FarmPublicId = z.string().uuid();
 
@@ -11,7 +11,7 @@ export const Farm = z.object({
   totalArea: z.number(),
   arableArea: z.number(),
   vegetationArea: z.number(),
-  crops: z.array(FarmCropPublic).optional(),
+  crops: z.array(CultivationPublicId).optional(),
 });
 
 export type Farm = z.infer<typeof Farm>;
@@ -30,6 +30,7 @@ export type FarmPublicInput = z.infer<typeof FarmPublicInput>;
 
 export const FarmPublicSearch = z.object({
   farmId: FarmPublicId,
+  producerId: FarmPublicId,
   name: z.string().min(1),
   city: z.string().min(1),
   state: z.string().min(1),

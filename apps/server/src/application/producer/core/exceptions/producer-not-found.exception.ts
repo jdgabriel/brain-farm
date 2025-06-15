@@ -1,4 +1,4 @@
-import { ConflictException, HttpStatus } from '@nestjs/common';
+import { HttpStatus, NotFoundException } from '@nestjs/common';
 import { ApiProperty } from '@nestjs/swagger';
 
 export const ProducerNotFoundData = {
@@ -7,7 +7,7 @@ export const ProducerNotFoundData = {
   code: 'PRODUCER_NOT_FOUND',
 } as const;
 
-export class ProducerNotFound extends ConflictException {
+export class ProducerNotFound extends NotFoundException {
   constructor() {
     super(ProducerNotFoundData);
   }

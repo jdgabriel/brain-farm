@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export const ProducerConflictData = {
   statusCode: HttpStatus.CONFLICT,
-  message: 'Producer already exists',
+  message: 'Producer document already exists',
   code: 'PRODUCER_CONFLICT',
 } as const;
 
